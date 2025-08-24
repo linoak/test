@@ -1,0 +1,87 @@
+:root {
+  --bg: #0f172a;
+  --panel: #111827;
+  --muted: #94a3b8;
+  --text: #e5e7eb;
+  --primary: #60a5fa;
+  --success: #34d399;
+  --danger: #f87171;
+  --card: #0b1220;
+  --border: #1f2937;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  background: radial-gradient(1200px 800px at 80% -20%, #1e293b, transparent), var(--bg);
+  color: var(--text);
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(2,6,23,0.6);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.brand { font-weight: 700; letter-spacing: 0.5px; }
+.controls { display: flex; gap: 16px; align-items: center; }
+label { color: var(--muted); font-size: 14px; }
+select { background: var(--panel); color: var(--text); border: 1px solid var(--border); padding: 8px 10px; border-radius: 8px; }
+
+.tabs { display: flex; gap: 8px; }
+.tab { background: transparent; color: var(--muted); border: 1px solid var(--border); padding: 8px 12px; border-radius: 999px; cursor: pointer; }
+.tab.active { color: var(--text); border-color: var(--primary); }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 18px; }
+.view { display: none; }
+.view.active { display: block; }
+
+.panel { background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent), var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 16px; }
+.panel-header { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.deck-picker { display: flex; gap: 10px; align-items: center; }
+.deck-picker select#deckSelect { display: none; }
+.filter-row { display: flex; gap: 10px; align-items: center; margin: 6px 0 10px; }
+.progress { color: var(--muted); font-size: 14px; }
+
+.card-area { display: grid; place-items: center; padding: 18px 8px; }
+.flashcard { width: min(680px, 92vw); aspect-ratio: 16/10; border: 1px solid var(--border); border-radius: 16px; background: radial-gradient(800px 400px at 120% -20%, #0b1220, transparent), var(--card); display: grid; place-items: center; position: relative; transform-style: preserve-3d; transition: transform 0.5s ease; cursor: pointer; }
+.flashcard.flipped { transform: rotateY(180deg); }
+.flashcard .front, .flashcard .back { position: absolute; inset: 0; display: grid; place-items: center; padding: 18px; text-align: center; backface-visibility: hidden; }
+.flashcard .front { font-size: 28px; line-height: 1.35; }
+.flashcard .back { transform: rotateY(180deg); color: var(--muted); font-size: 18px; }
+
+.actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; padding: 6px; }
+button { background: #0b1220; color: var(--text); border: 1px solid var(--border); padding: 10px 14px; border-radius: 12px; cursor: pointer; }
+button.primary { border-color: var(--primary); }
+button.success { border-color: var(--success); }
+button:disabled { opacity: .5; cursor: not-allowed; }
+
+.shadow-out { margin: 8px auto 0; max-width: 680px; color: var(--muted); font-size: 14px; text-align: center; min-height: 20px; }
+
+.layout-split { display: grid; grid-template-columns: 260px 1fr; gap: 14px; }
+@media (max-width: 840px) { .layout-split { grid-template-columns: 1fr; } }
+
+.list { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 12px; }
+.scene-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.scene-list button { width: 100%; text-align: left; }
+
+.dialogue { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 12px; min-height: 420px; }
+.dialogue-header { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.hint { color: var(--muted); font-size: 13px; }
+.lines { margin: 8px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.line { border: 1px solid var(--border); border-radius: 12px; padding: 10px; background: #0b1220; display: grid; gap: 6px; }
+.line .src { font-size: 16px; }
+.line .zh { color: var(--muted); font-size: 14px; }
+.line .controls { display: flex; gap: 8px; }
+
+.app-footer { color: var(--muted); font-size: 13px; text-align: center; padding: 10px 14px 24px; }
+
+

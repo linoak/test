@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>多語互動學習｜卡片與日常會話</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="brand">多語互動學習</div>
+      <div class="controls">
+        <label for="langSelect">學習語言</label>
+        <select id="langSelect" aria-label="選擇學習語言">
+          <option value="en">英語 (EN)</option>
+          <option value="es">西班牙語 (ES)</option>
+          <option value="ja">日語 (JA)</option>
+        </select>
+
+        <nav class="tabs" role="tablist">
+          <button id="tabCards" class="tab active" data-view="cards" role="tab" aria-selected="true">卡片</button>
+          <button id="tabConvo" class="tab" data-view="convo" role="tab" aria-selected="false">日常會話</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- Cards View -->
+      <section id="viewCards" class="view active" aria-labelledby="tabCards">
+        <div class="panel">
+          <div class="panel-header">
+            <div class="deck-picker">
+              <label for="categorySelect">分類</label>
+              <select id="categorySelect" aria-label="選擇分類"></select>
+            </div>
+            <div class="actions">
+              <button id="btnSpeak" class="primary">🔊 朗讀</button>
+              <button id="btnShadow">🎤 跟讀</button>
+              <button id="btnFlip">🔁 翻面</button>
+              <button id="btnAgain">🤔 還不熟</button>
+              <button id="btnGood" class="success">✅ 記住了</button>
+            </div>
+            <div class="progress" id="cardsProgress">—</div>
+          </div>
+          
+          <div class="card-area">
+           
+            <div class="flashcard" id="flashcard" tabindex="0" aria-live="polite">
+              <div class="front" id="cardFront">—</div>
+              <div class="back" id="cardBack">—</div>
+            </div>
+          </div>
+
+          <div class="shadow-out" id="shadowOut" aria-live="polite"></div>
+
+        </div>
+      </section>
+
+      <!-- Conversation View -->
+      <section id="viewConvo" class="view" aria-labelledby="tabConvo">
+        <div class="layout-split">
+          <aside class="list">
+            <h2>情境列表</h2>
+            <div class="filter-row">
+              <label for="sceneCategorySelect">分類</label>
+              <select id="sceneCategorySelect" aria-label="情境分類"></select>
+            </div>
+            <ul id="sceneList" class="scene-list" aria-label="情境"></ul>
+          </aside>
+          <section class="dialogue" aria-live="polite">
+            <div class="dialogue-header">
+              <div>
+                <h2 id="sceneTitle">—</h2>
+                <div class="hint">點擊每句可朗讀，或使用跟讀</div>
+              </div>
+              <div class="dialogue-actions">
+                <button id="btnPlayAll">▶️ 播放全段</button>
+              </div>
+            </div>
+            <ol id="dialogueLines" class="lines"></ol>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <div>語音朗讀採用瀏覽器 Speech Synthesis（可離線，視系統語音而定）。跟讀功能需瀏覽器支援語音辨識。</div>
+    </footer>
+
+    <script src="./data.js"></script>
+    <script src="./app.js"></script>
+  </body>
+  </html>
+
+
